@@ -100,15 +100,16 @@ document.write('<script defer>document.addEventListener("DOMContentLoaded", func
           'const isExpanded = button.getAttribute("aria-expanded") === "true";' +
           'button.setAttribute("aria-expanded", !isExpanded);' +
           'if (isExpanded) {' +
-              'content.style.maxHeight = "0";' +
-         ' content.style.display = "none";'+
-              'content.style.padding = "0 18px";'+
-              'content.classList.add("open--accordion");'+
+              'content.style.maxHeight = "0px";' +
+              
+              // ' content.style.display = "none";'+
+              // 'content.style.padding = "18px";'+
+              // 'content.classList.toggle("open--accordion");'+
           '} else {' +
-              'content.style.display = "block";' +
-              'content.style.padding = "18px";'+
-              'content.style.maxHeight = "fit-content";' +
-              'content.classList.add("close--accordion");'+
+              // 'content.style.display = "block";' +
+              // 'content.style.padding = "18px";'+
+              'content.style.maxHeight = content.scrollHeight + "px";' +
+              // 'content.classList.toggle("close--accordion");'+
           '}' +
       '});' +
   '});' +
@@ -220,9 +221,9 @@ var styles = 'aside ul, .info ul {margin-left:1em;}.sock{z-index:1;}.dropbtn{bor
   '.tabcontent {display: none;padding: 12px 6px;border: 0px solid #ccc;border-top: none;}.eao-tabs{pointer-events:auto}.eao__tabs__list{display:flex !important;width:auto;justify-content:space-around;}' +
   '.eao-tabs-button{padding:20px;border: 2px solid transparent;background-color:#f9f9f9;border-radius:5px;font-family:inherit;text-align:center;}.eao-tabs-button.active{color: #000000;border-color: #aa0000;background: #ffffff;pointer-events:none;}.tabs-title{margin-bottom:10px;}.subsection-title{margin-bottom:0px}.subsection-lists{margin:1%}.subsection-text{margin-left:2%; margin-top:1%;}' +
   '.subsection li{margin:1%;margin-left:3%}.student-journey {max-width: 80%;border-collapse: collapse;table-layout: fixed;display:block;min-height:fit-content;}.student-journey th, .student-journey td {border: 1px solid #ccc;padding: 8px;text-align: left;}.student-journey th {background-color: #004d66;color: white;}' +
-  '.student-journey td {background-color: #ffffff;}.student-journey tbody tr:nth-child(even) {background-color: #ffffff} .accordion__content {padding: 0 18px;background-color: white;max-height: 0;overflow: hidden;transition: max-height 0.5s ease-out, padding 0.5s ease-out;} .subsection{margin:5px;}'+
-  '.accordion__button { transition: background-color 0.5s ease-out;}.accordion__button[aria-expanded="true"] {background-color: #f0f0f0;}.closed--accordion{border: 0px solid white}.open--accordion{ padding: 2%; }.hidden{display:none;}.tab-section-title{font-weight:bold;font-size:larger;}.budget-btns{display:flex;justify-content: space-evenly;}'+
-  '.visa-overview-text{font-family: Montserrat, Gill Sans, sans-serif;font-size: .9375rem;font-weight: 500;line-height: 1.7;}.visa-blockquote{ font-size: larger;} .side-to-side-blocks{margin-bottom:2%}'
+  '.student-journey td {background-color: #ffffff;}.student-journey tbody tr:nth-child(even) {background-color: #ffffff} .accordion__content {padding: 0px 18px;background-color: white;max-height: 0px;overflow: hidden;transition: max-height 0.5s ease-out;} .subsection{margin:5px;}'+
+  '.accordion__button { transition: background-color 0.5s ease-out;}.accordion__button[aria-expanded="true"] {background-color: #f0f0f0;}.close--accordion{border: 0px solid white}.open--accordion{ padding: 18px;max-height: 700px; display: block; }.hidden{display:none;}.tab-section-title{font-weight:bold;font-size:larger;}.budget-btns{display:flex;justify-content: space-evenly;}'+
+  '.visa-overview-text{font-family: Montserrat, Gill Sans, sans-serif;font-size: .9375rem;font-weight: 500;line-height: 1.7;}.visa-blockquote{ font-size: larger;} .side-to-side-blocks{margin-bottom:2%}.finance-btn-div{text-align:center;display:flex;justify-content:space-evenly;}.accordion-div{padding:18px;}'
 appendToHtmlTag('head', 'style', styles, 'saStyles')
 
 writeHtml([
@@ -360,21 +361,24 @@ writeHtml([
   // '<dt><h3>Eligibility</h3></dt>',
   // '<dd>' + getPreReq() + '</dd>',
   '<div class="global-spacing--5x">', // acc start
-  '<div class="accordion flat-base-accordion close--accordion" id="housing-su-accordion">',
-  '<button id="housing-su-button"  aria-controls="housing-policy-content" aria-expanded="false" data-toggle-type="menu" aria-label="Additional Fees" class="accordion__button btn btn--small">',
-  '<span class="accordion__button-text">Housing</span>',
+  '<div class="accordion flat-base-accordion" id="housing-su-accordion">', // changed from close--accordion to open--accordion
+  '<button id="housing-su-button"  aria-controls="housing-policy-content" aria-expanded="true" data-toggle-type="menu" aria-label="Additional Fees" class="accordion__button btn btn--small">',
+  '<span class="accordion__button-text">Housing at Seattle University</span>',
   '</button>',
-  '<div class="panel accordion__content" id="housing-policy-content">',
-  '<h3 class="subsection-title">Housing at Seattle University</h3>',
+  '<div class="panel accordion__content open--accordion" id="housing-policy-content">',
+  '<div class="accordion-div">',
+  // '<h3 class="subsection-title">Housing at Seattle University</h3>',
   '<p class="subsection-text">Moving can be both costly and stressful, but careful planning can help minimize both. Start by creating a housing plan for before and after your study abroad experience to avoid the pressure of continuing to pay for rent at home. Program fees typically cover housing abroad, so if you expect to incur additional domestic rent expenses, be sure to include these in your budget. If possible, consider staying with family or friends temporarily before you depart or when you return to save on costs.</p>',
   '<h4 class="subsection-title">Housing Residence Life</h4>',
   '<p class="subsection-text">Education Abroad typically recommends considering Seattle University on-campus housing for when students return from their programs, as Housing Residence Life staff are able to support students in securing housing, while adhering to student preference as best as they can.</p>',
-  '<p><strong>Housing Application</strong> (check the Housing Portal for more specific dates)</p>',
+  '<h4 class="subsection-title">Housing Application</h4>',
+  '<p>Check the Housing Portal for more specific dates</p>',
   '<ul>',
   '<li>Winter Quarter Housing applications open in November</li>',
   '<li>Spring Quarter Housing applications open in February</li>',
   '<li>Fall Quarter Housing applications open in May</li>',
   '</ul>',
+  '</div>',
   '</div>',
   '</div>',
   '</div>',//acc end
@@ -414,6 +418,7 @@ writeHtml([
   '<span class="accordion__button-text">Academic Policy</span>',
   '</button>',
   '<div class="panel accordion__content" id="academic-policy-content">',
+  '<div class="accordion-div">',
   '<h3 class="subsection-title">Academic Policy & Minimum Grade Requirement:</h3>',
   '<ul class="subsection-text visa-overview-text">',
   '<li>Student will receive transfer credit for their study abroad program and academic grades will not be reflected on their Seattle University transcript and will not be reflected in the Seattle University GPA nor honors calculations.</li>',
@@ -423,6 +428,7 @@ writeHtml([
   '</ul>',
   '</div>',
   '</div>',
+  '</div>',
   '</div>',//acc end
   '<div class="global-spacing--5x">', // acc 2 start
   '<div class="accordion flat-base-accordion accordion--open" id="credit-transfer-su-accordion">',
@@ -430,10 +436,12 @@ writeHtml([
   '<span class="accordion__button-text"> Transfer of Credit & Placeholder Course</span>',
   '</button>',
   '<div class="panel accordion__content" id ="transfer-policy-content">',
+  '<div class="accordion-div">',
   '<h3 class="subsection-title">Transfer Credits</h3>',
   '<p class="subsection-text">Letter grades received on this program will not transfer to SU nor factor into Seattle University GPA. If students receive the minimum grade required, credits will transfer toward their Seattle University degree as approved through the required pre-departure Course Approval process. Minimum grade details will be specified during Course Approval for each course taken abroad.</p>',
   '<h3 class="subsection-title">Placeholder Course</h3>',
   '<p class="subsection-text">The Education Abroad Office will enroll students in a 12-credit placeholder course per term that you are abroad so that students maintain full-time student status and are billed properly. This placeholder course will be replaced by the courses taken abroad upon successful completion and receipt of official transcript.</p>',
+  '</div>',
   '</div>',
   '</div>',
   '</div>',//acc end
@@ -463,8 +471,9 @@ writeHtml([
   '<p>There are many study abroad scholarships for all program types. The application process may be easier than you think, but planning ahead is key. Deadlines are often 6-8 months in advance of departure. Check out the Scholarship section of Seattle University Education Abroad website for more information on scholarships and how to apply. </p>',
   // [Program Scholarships/Column BF]
   '</div>',
-  '<div style="text-align:center;" class="section-heading__link global-spacing--2x oho-animate fade-in">',
+  '<div class="section-heading__link global-spacing--2x oho-animate fade-in finance-btn-div">',
   //button with href
+  '<a href="https://www.seattleu.edu/academics/education-abroad/students/financial-planning/scholarships/">Scholarship Opportunities</a>',
   '<a href="https://www.seattleu.edu/academics/education-abroad/students/financial-planning/estimated-cost-comparison-calculator/">Cost Comparison Calculator</a>',
   '</div>',
   '</div>',
