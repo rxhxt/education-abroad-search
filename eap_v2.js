@@ -307,6 +307,7 @@ writeHtml([
   '<button class="tablinks tab-title tabs__button eao-tabs eao-tabs-button" id="finances" onClick="openCity(event, \'finances-tab\')" aria-selected="false">Finances</button>',
   '<button class="tablinks tab-title tabs__button eao-tabs eao-tabs-button" id="apply" onClick="openCity(event, \'apply-tab\')" aria-selected="false">How To Apply</button>',
   '<button class="tablinks tab-title tabs__button eao-tabs eao-tabs-button" id="country-profile" onClick="openCity(event, \'country-profile-tab\')" aria-selected="false">Country Profile</button>',
+  '<button class="tablinks tab-title tabs__button eao-tabs eao-tabs-button" id="visa-overview" onClick="openCity(event, \'visa-overview-tab\')" aria-selected="false">Passport & Visa Requirements</button>',
   '</div>',
   '<div id="program-details-tab" class="tabcontent" style="display:block;" >', // Tab 1: Program details
   '<dl class="global-spacing--2x">',
@@ -515,12 +516,7 @@ writeHtml([
   '</div>',
   '<div class="subsection-title"><h3>Application Steps</h3></div>',
   get('Application Instructions', (text) => { return makeList('' + text.publish(), '|', 'ol') }, () => makeList('Information not specified')),('If you haven’t joined the Education Abroad Canvas Course yet, ' + ('Join Now!'.wrap([{ attributes: 'href="https://forms.office.com/Pages/ResponsePage.aspx?id=UuAQvBywSUiZZ-5-x0_J2CrqSVSnPn9KtGVI66pTpfNUNTZYMTFSWUsxVlIxUFU1TVhLQkEzQlFZSyQlQCN0PWcu"', tag: 'a' }])) + '').wrap('p'),
-  '<div class="subsection-title"><h3>Visa Requirements</h3>',
-  '<blockquote><h4> What is a Visa?</h4>',
-  '<p class="subsection-text visa-blockquote">A visa is a permission granted by a country that allows foreign nationals to enter and reside there temporarily. Applicants typically need to provide documentation such as an acceptance letter from the educational institution, proof of financial means, and health insurance. Student visas come with specific regulations regarding work rights, travel restrictions, and duration of stay, varying by country.</p>',
-  '</blockquote>',
-  get('Visa Overview') ? ('<div class="wysiwyg visa-overview-text">' + get('Visa Overview') + '</div>') : '<span class="hidden">No valid text given</span>',
-  '</div>',
+  
   '</div>',
   '</div>',
   '<div id="country-profile-tab" class="tabcontent">', // Tab 5: Country Profile
@@ -546,6 +542,14 @@ writeHtml([
   '</div>',
   '</div>',
   '</div>', // tab end 
+  '<div id="visa-overview-tab" class="tabcontent">', // Tab 6: Visa Overview
+  '<div class="subsection-title"><h3>Visa Requirements</h3>',
+  '<blockquote><h4> What is a Visa?</h4>',
+  '<p class="subsection-text visa-blockquote">A visa is a permission granted by a country that allows foreign nationals to enter and reside there temporarily. Applicants typically need to provide documentation such as an acceptance letter from the educational institution, proof of financial means, and health insurance. Student visas come with specific regulations regarding work rights, travel restrictions, and duration of stay, varying by country.</p>',
+  '</blockquote>',
+  get('Visa Overview') ? ('<div class="wysiwyg visa-overview-text">' + get('Visa Overview') + '</div>') : '<span class="hidden">No valid text given</span>',
+  '</div>',
+  '</div>', // tab end
   '</div>', // 
   '</section>',
   '<hr></hr>',
