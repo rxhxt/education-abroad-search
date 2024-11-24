@@ -267,7 +267,7 @@ writeHtml([
   '<div class="grid-x grid-margin-x">',
   '<div class="cell medium-8">',
   '<h2>About this Program</h2>',
-  '<div class="wysiwyg"><p>' + get('Program Summary HTML') + '</p></div><!-- /.wysiwyg -->',
+  get('Program Summary HTML')?'<div class="wysiwyg"><p>' + get('Program Summary HTML') + '</p></div><!-- /.wysiwyg -->': '<div class="wysiwyg global-padding--5x"><span class="hidden">No valid text given</span></div>',
   '<div class="btn-row global-spacing--3x">',
   // '<ul>',
   // '<li class="external">',
